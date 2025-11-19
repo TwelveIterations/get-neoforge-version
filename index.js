@@ -1,15 +1,16 @@
 const core = require('@actions/core');
-const findForgeVersion = require("./version");
+const { findNeoForgeVersion, findNeoFormVersion } = require("./version");
 
 async function run() {
   try {
     const minecraftVersion = core.getInput('minecraftVersion');
-    const channel = core.getInput('channel');
-    core.info(`Finding Forge version for ${minecraftVersion}-${channel} ...`);
+    core.info(`Finding NeoForge versions for ${minecraftVersion}...`);
 
-    const version = await findForgeVersion(minecraftVersion, channel);
+    const neoForgeVersion = await findNeoForgeVersion(minecraftVersion);
+    const neoFormVersion = await findNeoFormVersion(minecraftVersion);
 
-    core.setOutput('version', version);
+    core.setOutput('neoForgeVersion', neoForgeVersion);
+    core.setOutput('neoFormVersion', neoFormVersion);
   } catch (error) {
     core.setFailed(error.message);
   }

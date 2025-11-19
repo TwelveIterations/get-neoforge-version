@@ -1,21 +1,38 @@
 const fetch = require('cross-fetch')
 
-let findForgeVersion = async function (minecraftVersion, channel) {
+let findNeoForgeVersion = async function (minecraftVersion) {
     if (typeof minecraftVersion !== 'string') {
         throw new Error('minecraftVersion not a string');
     }
-    if (channel !== 'latest' && channel !== 'recommended') {
-        throw new Error("channel must be either 'latest' or 'recommended'");
-    }
 
-    const response = await fetch('https://files.minecraftforge.net/net/minecraftforge/forge/promotions_slim.json');
+    const response = await fetch('https://maven.neoforged.net/api/maven/versions/releases/net/neoforged/neoforge');
     const json = await response.json();
-    const version = json['promos'][minecraftVersion + '-' + channel];
+    // NeoForge versions map to Minecraft versions by the major and patch
+    const versionPrefix = minecraftVersion.replace(/^1\./, '');
+    const versions = json.versions.filter(it => it.startsWith(versionPrefix));
+    const version = versions[versions.length - 1];
     if (version) {
         return version;
     } else {
-        throw new Error(`No version found for ${minecraftVersion} on channel ${channel}`);
+        throw new Error(`No version found for ${minecraftVersion}`);
     }
 };
 
-module.exports = findForgeVersion;
+let findNeoFormVersion = async function (minecraftVersion) {
+    if (typeof minecraftVersion !== 'string') {
+        throw new Error('minecraftVersion not a string');
+    }
+
+    const response = await fetch('https://maven.neoforged.net/api/maven/versions/releases/net/neoforged/neoform');
+    const json = await response.json();
+    // NeoForm versions are prefixed with the full Minecraft version
+    const versions = json.versions.filter(it => it.startsWith(minecraftVersion + '-'));
+    const version = versions[versions.length - 1];
+    if (version) {
+        return version;
+    } else {
+        throw new Error(`No version found for ${minecraftVersion}`);
+    }
+};
+
+module.exports = { findNeoForgeVersion, findNeoFormVersion };
