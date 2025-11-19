@@ -17,7 +17,7 @@ test('throws missing version', async () => {
 
 test('get latest version', async () => {
   const version = await findForgeVersion('1.15.2', 'latest');
-  expect(version).toBe('31.2.57');
+  expect(version).toBe('31.2.60');
 });
 
 test('get recommended version', async () => {
