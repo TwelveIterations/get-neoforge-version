@@ -1,12 +1,21 @@
-name: 'Get Minecraft NeoForge Version'
-description: 'Finds the latest Minecraft NeoForge version for a Minecraft version'
+name: 'Get NeoForge Version'
+description:
+  'Finds the latest NeoForge version matching a version search string'
+author: Twelve Iterations
+
+branding:
+  icon: heart
+  color: red
+
 inputs:
-  minecraftVersion:
-    description: 'The Minecraft version you want to get the latest NeoForge version for'
+  version:
+    description: 'Version to search for (e.g., 21.11.* for wildcard matching)'
     required: true
+
 outputs:
   version:
-    description: 'The latest NeoForge version for the given Minecraft version and release channel'
+    description: 'The latest NeoForge version matching the search criteria'
+
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: node20
+  main: dist/index.js
