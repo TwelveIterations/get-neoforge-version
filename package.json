@@ -1,7 +1,7 @@
 {
-  "name": "get-forge-version",
+  "name": "get-neoforge-version",
   "version": "1.0.0",
-  "description": "Finds the latest Minecraft Forge version for a Minecraft version",
+  "description": "Finds the latest Minecraft NeoForge version for a Minecraft version",
   "main": "index.js",
   "scripts": {
     "lint": "eslint .",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ModdingForBlockheads/get-forge-version.git"
+    "url": "git+https://github.com/TwelveIterations/get-neoforge-version.git"
   },
   "keywords": [
     "GitHub",
@@ -21,9 +21,9 @@
   "author": "BlayTheNinth",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ModdingForBlockheads/get-forge-version/issues"
+    "url": "https://github.com/TwelveIterations/get-neoforge-version/issues"
   },
-  "homepage": "https://github.com/ModdingForBlockheads/get-forge-version#readme",
+  "homepage": "https://github.com/TwelveIterations/get-neoforge-version#readme",
   "dependencies": {
     "@actions/core": "^1.11.1",
     "cross-fetch": "^4.1.0"

@@ -1,16 +1,12 @@
-name: 'Get Minecraft Forge Version'
-description: 'Finds the latest Minecraft Forge version for a Minecraft version'
+name: 'Get Minecraft NeoForge Version'
+description: 'Finds the latest Minecraft NeoForge version for a Minecraft version'
 inputs:
   minecraftVersion:
-    description: 'The Minecraft version you want to get the latest Forge version for'
+    description: 'The Minecraft version you want to get the latest NeoForge version for'
     required: true
-  channel:
-    description: "The release channel, either 'latest' or 'recommended'"
-    required: false
-    default: latest
 outputs:
   version:
-    description: 'The latest Forge version for the given Minecraft version and release channel'
+    description: 'The latest NeoForge version for the given Minecraft version and release channel'
 runs:
   using: 'node16'
   main: 'dist/index.js'

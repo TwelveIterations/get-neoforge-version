@@ -60,8 +60,7 @@ Your action is now published! :rocket:
 You can now consume the action by referencing the v1 branch
 
 ```yaml
-uses: ModdingForBlockheads/get-forge-version@v1
+uses: TwelveIterations/get-neoforge-version@v1
 with:
   minecraftVersion: 1.19.2
-  channel: recommended
 ```
